@@ -1,29 +1,27 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
-  });
+@Component({
+  selector: 'app-calculadora',
+  templateUrl: './App.component.html',
+  styleUrls: ['./App.component.css']
+})
+export class AppComponent{
+  expression = '';
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  addToExpression(value: string): void{
+    this.expression += value;
+  }
 
-  it(`should have the 'UD36' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('UD36');
-  });
+  clear(): void{
+    this.expression = '';
+  }
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, UD36');
-  });
-});
+  calculate(): void{
+    try{
+      const result = Function(`'use strict'; return (${this.expression})`)();
+      this.expression = result.toString();
+    } catch (error) {
+      this.expression = 'Error';
+    }
+  }
+}

@@ -1,0 +1,36 @@
+:host{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+#calculadora{
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+#pantalla{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 1.5em;
+    padding: 0 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.teclas{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+button.clear{
+    grid-column: span 2;
+    background-color: #cc0000;
+}
