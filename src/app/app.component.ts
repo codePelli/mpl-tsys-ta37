@@ -13,7 +13,7 @@ export class AppComponent{
   pantalla = "";
 
   actualizarPantalla(valor: string){
-    this.pantalla += valor;
+    this.pantalla = this.pantalla + valor;
   }
 
   limpiarPantalla(){
